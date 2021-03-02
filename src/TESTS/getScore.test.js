@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import { get, save } from '../Objects/apiScore';
 
 jest.mock('../Objects/apiScore');
@@ -9,7 +8,6 @@ describe('Score Api tests', () => {
     data: {
       result: [
         { name: 'name1', score: 100 },
-        { name: 'name2', score: 200 },
       ],
     },
   });
@@ -24,6 +22,15 @@ describe('Score Api tests', () => {
     }
   }));
 
+  test('should get users', () => {
+    get().then(response => expect(response).toEqual({
+      data: {
+        result: [
+          { name: 'name1', score: 100 },
+        ],
+      },
+    }));
+  });
 
   test('should post new score', () => {
     save('name1', 100).then(response => expect(response)
